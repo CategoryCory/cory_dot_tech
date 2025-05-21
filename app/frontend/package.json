@@ -1,0 +1,16 @@
+{
+  "name": "cdt-frontend",
+  "version": "1.0.0",
+  "description": "The front end styling for corydottech.",
+  "main": "index.js",
+  "scripts": {
+    "dev": "npx @tailwindcss/cli -i ./input.css -o ../static/css/styles.css --watch",
+    "build": "npx @tailwindcss/cli -i ./input.css -o ../static/css/styles.css --minify"
+  },
+  "author": "Cory Coward",
+  "license": "MIT",
+  "dependencies": {
+    "@tailwindcss/cli": "^4.1.7",
+    "tailwindcss": "^4.1.7"
+  }
+}

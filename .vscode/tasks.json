@@ -1,0 +1,43 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "Tailwind Watch",
+            "type": "npm",
+            "script": "dev",
+            "options": {
+                "cwd": "${workspaceFolder}/app/frontend"
+            },
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Run Flask Server",
+            "type": "shell",
+            "command": "uv",
+            "args": [
+                "run",
+                "--",
+                "flask",
+                "run"
+            ],
+            "options": {
+                "env": {
+                    "FLASK_APP": "run.py",
+                    "FLASK_ENV": "development"
+                }
+            },
+            "group": "build",
+            "problemMatcher": []
+        },
+        {
+            "label": "Run Flask and Tailwind",
+            "dependsOn": [
+                "Tailwind Watch",
+                "Run Flask Server"
+            ],
+            "dependsOrder": "parallel",
+            "problemMatcher": []
+        }
+    ]
+}
