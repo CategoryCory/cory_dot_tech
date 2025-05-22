@@ -10,7 +10,10 @@
   "author": "Cory Coward",
   "license": "MIT",
   "dependencies": {
+    "@tailwindcss/aspect-ratio": "^0.4.2",
     "@tailwindcss/cli": "^4.1.7",
+    "@tailwindcss/typography": "^0.5.16",
+    "daisyui": "^5.0.35",
     "tailwindcss": "^4.1.7"
   }
 }

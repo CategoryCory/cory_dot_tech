@@ -1,3 +1,165 @@
 @import "tailwindcss";
+@plugin "@tailwindcss/typography";
+@plugin "@tailwindcss/aspect-ratio";
+@plugin "daisyui";
 
 @config "./tailwind.config.js";
+
+@layer base {
+    *,
+    ::after,
+    ::before,
+    ::backdrop,
+    ::file-selector-button {
+        border-color: var(--color-gray-200, currentColor);
+    }
+
+    html {
+        scroll-behavior: smooth !important;
+        --scroll-behavior: smooth !important;
+    }
+
+    body {
+        font-family: "Inter", "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        @apply flex flex-col min-h-screen text-slate-300 selection:bg-sky-300 selection:text-sky-950;
+    }
+
+    input[type="text"],
+    input[type="email"],
+    input[type="password"],
+    input[type="date"],
+    textarea {
+        @apply w-full px-4 py-2 font-mono bg-slate-800 border-2 border-slate-800 focus:outline-0 focus:ring-0
+            focus:border-sky-600 transition duration-150;
+    }
+
+    input[type="checkbox"] {
+        @apply w-5 h-5 rounded-sm text-indigo-600 border-slate-400 border-2 focus:ring-indigo-600;
+    }
+}
+
+@utility text-mono {
+    font-family:
+        'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        'Liberation Mono', 'Courier New', monospace;
+}
+
+@utility banner {
+    font-family:
+        'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        'Liberation Mono', 'Courier New', monospace;
+    @apply text-4xl sm:text-5xl md:text-7xl text-transparent tracking-wide font-black bg-clip-text
+        bg-linear-to-r from-[#6366F1] via-[#B74FFB] via-[#FA43F9] to-[#FF911A];
+}
+
+@utility double-border {
+    position: relative;
+    z-index: 0;
+    @apply box-border border-4 border-sky-400 after:box-border after:border-2 after:border-fuchsia-500;
+
+    &::after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100.75%;
+        height: 104%;
+        margin-left: -0.875rem;
+        margin-top: 0.5rem;
+        z-index: -1;
+    }
+}
+
+@utility section-header {
+    font-family:
+        'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas,
+        'Liberation Mono', 'Courier New', monospace;
+    @apply relative flex w-full justify-start items-center mb-6 text-xl md:text-2xl tracking-tight text-slate-200;
+}
+
+@utility section-header-line {
+    &::after {
+        content: '';
+        height: 2px;
+        margin: 0 0 0 20px;
+        flex: 1 0 20px;
+        background: rgb(99, 102, 241);
+        background: linear-gradient(
+            90deg,
+            rgba(99, 102, 241, 1) 0%,
+            rgba(183, 79, 251, 1) 33%,
+            rgba(250, 67, 249, 1) 66%,
+            rgba(255, 145, 26, 1) 100%
+        );
+    }
+}
+
+@utility job-card {
+    @apply my-4 px-10 py-4 hover:bg-slate-800 hover:shadow-lg transition duration-100;
+
+    & ul {
+        @apply ml-4 list-disc list-outside space-y-1.5 marker:text-sky-400;
+    }
+}
+
+@utility project-card {
+    @apply my-4 px-10 py-4 hover:bg-slate-800 hover:shadow-lg transition duration-100;
+}
+
+@utility skill-tag {
+    @apply px-3 py-1 inline-block text-sm text-sky-200 bg-sky-950 border border-sky-300;
+}
+
+@utility prose {
+    & h1 {
+        @apply text-slate-300;
+    }
+
+    & h2 {
+        @apply text-slate-300;
+    }
+
+    & h3 {
+        @apply text-slate-300;
+    }
+
+    & h4 {
+        @apply text-slate-300;
+    }
+
+    & p {
+        @apply text-slate-300;
+    }
+
+    & a {
+        @apply text-sky-400;
+    }
+}
+
+@utility button {
+    @apply py-2 cursor-pointer border-2 font-mono font-bold text-lg uppercase tracking-wider focus:ring-0
+        focus:outline-hidden transition duration-150;
+}
+
+@utility button-primary {
+    @apply border-sky-800 focus:bg-sky-800 hover:bg-sky-800;
+}
+
+@utility button-disabled {
+    @apply cursor-default text-sky-300 bg-sky-600 border-sky-600 focus:bg-sky-600 hover:bg-sky-600;
+}
+
+@utility alert-message {
+    @apply w-full my-4 px-5 py-3 flex gap-2;
+}
+
+@utility alert-success {
+    @apply bg-sky-300 text-sky-950;
+}
+
+@utility alert-info {
+    @apply bg-sky-300 text-sky-950;
+}
+
+@utility alert-error {
+    @apply bg-red-300 text-red-950;
+}
