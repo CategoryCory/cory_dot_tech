@@ -73,6 +73,7 @@ db.sqlite3-journal
 
 # Flask stuff:
 instance/
+.flaskenv
 
 # Scrapy stuff:
 .scrapy
@@ -355,8 +356,11 @@ web_modules/
 .yarn-integrity
 
 # dotenv environment variable files
+.env.development
 .env.development.local
+.env.test
 .env.test.local
+.env.production
 .env.production.local
 .env.local
 
