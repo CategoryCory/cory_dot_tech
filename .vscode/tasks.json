@@ -1,5 +1,12 @@
 {
     "version": "2.0.0",
+    "inputs": [
+        {
+            "id": "dbMigrationMessage",
+            "type": "promptString",
+            "description": "Enter the migration message"
+        }
+    ],
     "tasks": [
         {
             "label": "Tailwind Watch",
@@ -73,6 +80,34 @@
             ],
             "dependsOrder": "sequence",
             "group": "test"
+        },
+        {
+            "label": "Flask DB Migrate",
+            "type": "shell",
+            "command": "uv",
+            "args": [
+                "run",
+                "--",
+                "flask",
+                "db",
+                "migrate",
+                "-m",
+                "${input:dbMigrationMessage}"
+            ],
+            "problemMatcher": []
+        },
+        {
+            "label": "Flask DB Upgrade",
+            "type": "shell",
+            "command": "uv",
+            "args": [
+                "run",
+                "--",
+                "flask",
+                "db",
+                "upgrade"
+            ],
+            "problemMatcher": []
         }
     ]
 }
