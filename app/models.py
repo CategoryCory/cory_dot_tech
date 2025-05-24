@@ -1,9 +1,9 @@
 import enum
-from datetime import date
+from datetime import date, datetime, timezone
 from typing import Any, Optional
 import validators
 from slugify import slugify
-from sqlalchemy import Boolean, Date, Enum, event, Integer, String, Text
+from sqlalchemy import Boolean, Date, DateTime, Enum, event, Integer, String, Text
 from sqlalchemy.orm import Mapped, mapped_column, validates
 from app.extensions import db
 
@@ -79,5 +79,25 @@ class Project(db.Model):  # type: ignore[name-defined]
 
     def __repr__(self) -> str:
         return f'<Project {self.name}>'
+    
+
+class ContactSubmission(db.Model):  # type: ignore[name-defined]
+    id: Mapped[int] = mapped_column(Integer, primary_key=True)
+    name: Mapped[str] = mapped_column(String(100))
+    email: Mapped[str] = mapped_column(String(255))
+    message: Mapped[str] = mapped_column(Text)
+    received_at: Mapped[datetime] = mapped_column(
+        DateTime,
+        default=lambda: datetime.now(timezone.utc)
+    )
+
+    @validates('email')
+    def validate_email(self, key: Any, value: str) -> str:
+        if not validators.email(value):
+            raise ValueError(f'Invalid email address: {value}')
+        return value
+
+    def __repr__(self) -> str:
+        return f'<ContactSubmission {self.name}>'
 
 event.listen(Project.name, 'set', Project.generate_slug, retval=False)
