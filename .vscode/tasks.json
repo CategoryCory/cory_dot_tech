@@ -56,6 +56,12 @@
                 "flask",
                 "shell"
             ],
+            "options": {
+                "env": {
+                    "FLASK_APP": "run.py",
+                    "FLASK_ENV": "development"
+                }
+            },
             "problemMatcher": []
         },
         {

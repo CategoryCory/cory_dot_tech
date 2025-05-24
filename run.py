@@ -5,7 +5,7 @@ import sqlalchemy.orm as so
 from dotenv import load_dotenv
 from app import create_app
 from app.extensions import db
-from app.models import WorkExperience, Project
+from app.models import WorkExperience, Project, ContactSubmission
 
 env = os.getenv('APP_ENV', 'development')
 load_dotenv(f'.env.{env}')
@@ -28,4 +28,5 @@ def make_shell_context() -> dict[str, Any]:
         'db': db,
         'WorkExperience': WorkExperience,
         'Project': Project,
+        'ContactSubmission': ContactSubmission,
     }
