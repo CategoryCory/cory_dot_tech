@@ -4,8 +4,8 @@
         {
             "id": "dbMigrationMessage",
             "type": "promptString",
-            "description": "Enter the migration message"
-        }
+            "description": "Enter the migration message",
+        },
     ],
     "tasks": [
         {
@@ -13,10 +13,10 @@
             "type": "npm",
             "script": "dev",
             "options": {
-                "cwd": "${workspaceFolder}/app/frontend"
+                "cwd": "${workspaceFolder}/app/frontend",
             },
             "group": "build",
-            "problemMatcher": []
+            "problemMatcher": [],
         },
         {
             "label": "Run Flask Server",
@@ -26,25 +26,26 @@
                 "run",
                 "--",
                 "flask",
-                "run"
+                "run",
+                "--debug",
             ],
             "options": {
                 "env": {
                     "FLASK_APP": "run.py",
-                    "FLASK_ENV": "development"
+                    "FLASK_ENV": "development",
                 }
             },
             "group": "build",
-            "problemMatcher": []
+            "problemMatcher": [],
         },
         {
             "label": "Run Flask and Tailwind",
             "dependsOn": [
                 "Tailwind Watch",
-                "Run Flask Server"
+                "Run Flask Server",
             ],
             "dependsOrder": "parallel",
-            "problemMatcher": []
+            "problemMatcher": [],
         },
         {
             "label": "Run Flask shell",
@@ -54,15 +55,15 @@
                 "run",
                 "--",
                 "flask",
-                "shell"
+                "shell",
             ],
             "options": {
                 "env": {
                     "FLASK_APP": "run.py",
-                    "FLASK_ENV": "development"
+                    "FLASK_ENV": "development",
                 }
             },
-            "problemMatcher": []
+            "problemMatcher": [],
         },
         {
             "label": "Mypy check",
@@ -72,10 +73,10 @@
                 "run",
                 "--",
                 "mypy",
-                "."
+                ".",
             ],
             "group": "test",
-            "problemMatcher": []
+            "problemMatcher": [],
         },
         {
             "label": "Ruff check",
@@ -85,10 +86,10 @@
                 "run",
                 "--",
                 "ruff",
-                "check"
+                "check",
             ],
             "group": "test",
-            "problemMatcher": []
+            "problemMatcher": [],
         },
         {
             "label": "Lint all",
@@ -97,7 +98,7 @@
                 "Ruff check",
             ],
             "dependsOrder": "sequence",
-            "group": "test"
+            "group": "test",
         },
         {
             "label": "Flask DB Migrate",
@@ -110,9 +111,9 @@
                 "db",
                 "migrate",
                 "-m",
-                "${input:dbMigrationMessage}"
+                "${input:dbMigrationMessage}",
             ],
-            "problemMatcher": []
+            "problemMatcher": [],
         },
         {
             "label": "Flask DB Upgrade",
@@ -123,9 +124,9 @@
                 "--",
                 "flask",
                 "db",
-                "upgrade"
+                "upgrade",
             ],
-            "problemMatcher": []
-        }
-    ]
+            "problemMatcher": [],
+        },
+    ],
 }
