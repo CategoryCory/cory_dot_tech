@@ -47,6 +47,18 @@
             "problemMatcher": []
         },
         {
+            "label": "Run Flask shell",
+            "type": "shell",
+            "command": "uv",
+            "args": [
+                "run",
+                "--",
+                "flask",
+                "shell"
+            ],
+            "problemMatcher": []
+        },
+        {
             "label": "Mypy check",
             "type": "shell",
             "command": "uv",
