@@ -8,4 +8,25 @@
         <h2 class="inline-block banner pt-5 pb-3 tracking-tight">Cory Coward</h2>
         <p class="section-header">Backend &amp; embedded software engineer</p>
     </div>
+    <div class="mt-16">
+        <h2 id="work-experience" class="section-header section-header-line">Work Experience</h2>
+        {% for exp in work_experiences %}
+            <div class="job-card space-y-2">
+                <h3 class="text-slate-200">
+                    <span class="text-lg text-sky-300 font-extrabold">{{ exp.title }}</span> @ {{ exp.company }}
+                </h3>
+                <p>{{ exp.start_date }} &ndash; {% if exp.end_date %}{{ exp.end_date }}{% else %}Present{% endif %}</p>
+                {{ exp.description }}
+{#                {% if exp.skills_used %}#}
+{#                    <div class="flex justify-start items-center flex-wrap gap-3">#}
+{#                        {% for exp_skill in exp.skills_used.all %}#}
+{#                            <p class="font-mono skill-tag">#}
+{#                                {{ exp_skill }}#}
+{#                            </p>#}
+{#                        {% endfor %}#}
+{#                    </div>#}
+{#                {% endif %}#}
+            </div>
+        {% endfor %}
+    </div>
 {% endblock content %}
